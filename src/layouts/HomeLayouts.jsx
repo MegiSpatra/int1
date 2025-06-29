@@ -2,11 +2,15 @@ import React from "react";
 import Navbar from "../component/organisems/Navbar";
 import Footer from "../component/organisems/Footer";
 
-export default function homeLayouts({ Children }) {
+export default function HomeLayouts({ children }) {
   return (
     <>
         <Navbar />
-        {Children}
+
+        <main>
+        {children}
+        </main>
+
         <Footer />
     </>
   )

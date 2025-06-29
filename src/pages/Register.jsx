@@ -5,7 +5,7 @@ import googleIcon from '../assets/images/logo/google-icon.png'
 
 export default function Register() {
   return (
-    <div className="font-[Lato] w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${bgRegist})`}}>
+    <div className="font-Lato w-screen h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${bgRegist})`}}>
     <main className="bg-black/85 min-w-[306px] p-6 rounded-md text-white">
         <div className="flex flex-col items-center mb-6">
         <img className="w-[94px] h-[24px] mb-5" src={logo} alt="logo-chill" />
