@@ -16,7 +16,7 @@ export default function Home() {
     <>
     <HomeLayouts> 
 
-     <div className="bg-[#1c1c1e] text-white font-Lato">
+     <div className="bg-[#1c1c1e] text-white font-Lato w-full h-full">
         <div className="relative pt-24 bg-center bg-cover bg-no-repeat p-8 flex flex-col text-left" style={{ backgroundImage: `url(${bgHome})` }}>
           <div className="absolute inset-0 bg-black/70 z-0"></div>
           <div className="relative z-10 px-20 py-10 flex flex-col text-left">
@@ -31,9 +31,9 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="px-8 py-4 w-1,440px mx-auto">
+        <section className="px-8 py-4 w-1,440px mx-auto overflow-auto ">
           <h2 className="px-20 py-10 text-xl font-semibold">Melanjutkan Tonton Film</h2>
-          <div>
+          <div className="flex gap-4 w-full h-full overflow-x-auto">
             <div className="flex gap-4 overflow-x-auto px-20">
             <div className="w-[302] h-[162px] rounded-lg bg-[#333]">
               <img className  ="w-full h-full object-cover rounded-lg" src = {content1} alt="Film 1" />
