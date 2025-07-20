@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.10.0",
     "dotenv": "^17.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.2",
     "tailwindcss": "^4.1.11"
   },
@@ -29,5 +31,9 @@
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
     "vite": "^6.3.5"
-  }
+  },
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
 }

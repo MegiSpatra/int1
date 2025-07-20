@@ -81,7 +81,7 @@ export default function Admin() {
 
         {/* Form Input */}
         <div className="bg-gray-900 p-4 rounded-lg mb-6">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl text-amber-50 font-semibold mb-4">
             {editingId ? "Edit Film" : "ADMIN - Tambah Film"}
           </h2>
           <input

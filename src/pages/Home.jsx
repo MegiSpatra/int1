@@ -1,4 +1,4 @@
-import React from "react";
+
 import HomeLayouts from "../layouts/homeLayouts";
 import bgHome from '../assets/images/background/bg-beranda.png'; // Adjust the path as necessary
 import content1 from "../assets/images/content/allOfUs.png";
@@ -10,6 +10,11 @@ import topRate2 from "../assets/images/content/topRating/bigHero.png";
 import topRate3 from "../assets/images/content/topRating/jurasskWorld.png"; 
 import topRate4 from "../assets/images/content/topRating/sonic.png";
 import topRate5 from "../assets/images/content/topRating/suzume.png";
+
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+const API_URL = import.meta.env.VITE_API_URL + "/movies";
 
 export default function Home() {
   return (

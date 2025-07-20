@@ -3,8 +3,42 @@ import React from 'react'
 import googleIcon from "../assets/images/logo/google-icon.png";
 import logoChill from "../assets/images/logo/logo-chill.png";
 import bgLogin from "../assets/images/background/bg-login.jpg";
+import Home from './Home';
+
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/slices/authSlice';
+import axios from '../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const [form, setForm] = useState({ username: '', password: '' });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get('/users');
+      const user = res.data.find(
+        (u) => u.username === form.username && u.password === form.password
+      );
+      if (user) {
+        dispatch(login(user));
+        navigate('/profile');
+      } else {
+        alert('Login gagal.');
+      }
+    } catch (err) {
+      alert('Terjadi kesalahan');
+    }
+  };
+
+
   return (
     <div>
           <div
@@ -18,27 +52,27 @@ export default function Login() {
                 <p className="text-sm text-center">Selamat datang kembali</p>
               </div>
       
-              <form className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="flex flex-col gap-1">
                   <label htmlFor="username" className="text-xs font-medium tracking-wide">
                     Username
                   </label>
-                  <input type="text" name="username" id="username" placeholder="Masukan username" className="bg-transparent text-sm px-3 py-2 border border-white/20 rounded-xl text-gray-300 focus:outline-none" />
-                  <i className="fa-solid fa-eye-slash absolute right-3 top-9 text-xs text-gray-300 cursor-pointer togglePassword"></i>
+                  <input name="username" onChange={handleChange} id="username" placeholder="Masukan username" className="bg-transparent text-sm px-3 py-2 border border-white/20 rounded-xl text-gray-300 focus:outline-none" />
+                  {/* <i className="fa-solid fa-eye-slash absolute right-3 top-9 text-xs text-gray-300 cursor-pointer togglePassword"></i> */}
                 </div>
       
                 <div className="flex flex-col gap-1 relative">
                   <label htmlFor="password" className="text-xs font-medium tracking-wide">
                     Kata sandi
                   </label>
-                  <input type="password" name="password" id="password" placeholder="Masukan kata sandi" className="bg-transparent text-sm px-3 py-2 border border-white/20 rounded-xl text-gray-300 focus:outline-none" />
+                  <input name="password" onChange={handleChange} id="password" placeholder="Masukan kata sandi" className="bg-transparent text-sm px-3 py-2 border border-white/20 rounded-xl text-gray-300 focus:outline-none" />
                   <i className="fa-solid fa-eye-slash absolute right-3 top-9 text-xs text-gray-300 cursor-pointer togglePassword"></i>
                 </div>
       
                 <div className="flex justify-between text-[10px] text-gray-400 mt-[-16px] mb-4">
                   <p>
                     Belum punya akun?{" "}
-                    <a href="./register.html" className="text-white underline">
+                    <a href="/register" className="text-white underline">
                       Daftar
                     </a>
                   </p>
@@ -47,10 +81,8 @@ export default function Login() {
                   </a>
                 </div>
       
-                <button type="submit" className="w-full bg-transparent border border-white/20 rounded-xl py-2 text-[10px] font-semibold hover:bg-gray-700 transition">
-                  <a href="beranda.html" className="block w-full text-white">
+                <button type="submit" className="w-full bg-transparent border border-white/20 rounded-xl py-2 text-[10px] font-semibold hover:bg-gray-700 transition  text-white">
                     Masuk
-                  </a>
                 </button>
       
                 <p className="text-center text-xs text-gray-400 my-2">Atau</p>
