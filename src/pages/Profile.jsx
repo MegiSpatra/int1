@@ -1,23 +1,14 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFavorite } from '../redux/slices/favoriteSlice';
+import { useContext } from "react";
+import { MainProfil } from "../components/MainProfil";
+import { Navbar } from "../components/Navbar";
+import { PopupContext } from "../initialMovies";
+import { PopupDetailFilm } from "../components/PopupDetailFilm";
 
-export default function Profile() {
-  const user = useSelector(state => state.auth.user);
-  const favorites = useSelector(state => state.favorite);
-  const dispatch = useDispatch();
-
+export const Profile = () => {
   return (
-    <div>
-      <h2>Welcome, {user?.username}</h2>
-      <h3>Favorites:</h3>
-      <ul>
-        {favorites.map(movie => (
-          <li key={movie.id}>
-            {movie.title}
-            <button onClick={() => dispatch(removeFavorite(movie.id))}>Hapus</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <main className="bg-black text-white">
+        <Navbar />
+        <MainProfil />
+      </main>
   );
-}
+};
